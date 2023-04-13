@@ -57,4 +57,24 @@ function ItemAllClear() {
   }
 }
 
-btncler.addEventListener('click', ItemAllClear)
+btncler.addEventListener('click', ItemAllClear);
+
+const ItemFilter = document.getElementById('filter');
+
+function filterItems(e) {
+  const items = ItemList.querySelectorAll('li');
+  const text = e.target.value.toLowerCase();
+
+  items.forEach((item) => {
+    const itemName = item.firstChild.textContent.toLowerCase();
+
+    if (itemName.indexOf(text) != -1) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+
+ItemFilter.addEventListener('input', filterItems);
